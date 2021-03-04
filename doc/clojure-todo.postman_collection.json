@@ -34,9 +34,9 @@
 					"response": []
 				},
 				{
-					"name": "Get All Items",
+					"name": "Delete Item",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
 						"url": {
 							"raw": "localhost:3000/todos/:id",
@@ -51,8 +51,26 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": ""
+									"value": "9"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Items",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/todos",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"todos"
 							]
 						}
 					},
@@ -65,7 +83,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"To do\",\n    \"description\": \"New item\"\n}",
+							"raw": "{\n    \"title\": \"comida\",\n    \"description\": \"Lavar cenoura\",\n    \"tags\": \"Personal\",\n    \"done\": true,\n    \"due_date\": \"2021-03-03 23:10:25\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -93,13 +111,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:3000/request",
+					"raw": "localhost:3000/whoami",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"request"
+						"whoami"
 					]
 				}
 			},
