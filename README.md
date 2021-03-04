@@ -68,19 +68,6 @@ The postman requests are in the [doc](doc/clojure-todo.postman_collection.json) 
         └── routes.clj
 ```
 
-## Future improvements
-- Item
-  - Add Groups / tags
-  - Completed Status
-  - Timestamps
-  - Due Date
-- User Table and relation
-- Reminders Service
-- [Schema validation](https://github.com/plumatic/schema)
-- Create route [contexts](https://weavejester.github.io/compojure/compojure.core.html#var-context)
-- Authentication JWT
-- 
-
 ## License
 
 Copyright © 2021 FIXME
