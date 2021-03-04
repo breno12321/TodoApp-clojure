@@ -10,9 +10,9 @@
   (select items))
 
 (defn add-todo
-  [title description]
+  [title description tags done due_date]
   (insert items
-          (values {:title title :description description})))
+          (values {:title title :description description :tags tags :done done :due_date due_date})))
 
 (defn delete-todo
   [id]
@@ -31,3 +31,8 @@
   (first
     (select items
             (where {:id [= id]}))))
+
+(defn del-todo
+  [id]
+  (delete items
+          (where {:id [= id]})))

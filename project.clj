@@ -13,6 +13,7 @@
                  [compojure "1.6.1"]
                  [http-kit "2.3.0"]
                  [korma "0.4.3"]
+                 [clj-time "0.15.2"]
                  [lynxeyes/dotenv "1.0.2"]]
   :repl-options {:init-ns todo.core}
   :main ^:skip-aot todo.core

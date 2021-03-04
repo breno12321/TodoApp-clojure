@@ -13,7 +13,7 @@
    :body    {
              :status "ok"
              :data (-> (api/get-todos))
-             :timestamp (System/currentTimeMillis)
+             :timestamp (.getTime (new java.util.Date))
              }})
 
 (defn get-todo-route
@@ -24,7 +24,7 @@
    :body    {
              :status "ok"
              :data (-> (api/get-todo (req :params)))
-             :timestamp (System/currentTimeMillis)
+             :timestamp (.getTime (new java.util.Date))
              }})
 
 (defn add-todos-route
@@ -37,3 +37,22 @@
              :data (-> (api/add-todos (req :params)))
              :timestamp (System/currentTimeMillis)
              }})
+
+(defn delete-todo-route
+  "Endpoint for delete a todo"
+  [req]
+  {:status  200
+   :headers {"Content-Type" "application/json"}
+   :body    {
+             :status 200
+             :data {:affectedRows (-> (api/del-todo (req :params)))}
+             :timestamp (System/currentTimeMillis)
+             }})
+
+(def items-router
+  (context "/todos" []
+    (GET "/" [] get-todos-route)
+    (GET "/:id" [] get-todo-route)
+    (POST "/" [] add-todos-route)
+    (DELETE "/:id" [] delete-todo-route)
+    ))

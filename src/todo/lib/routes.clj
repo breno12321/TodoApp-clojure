@@ -3,8 +3,8 @@
     [compojure.core :refer :all]
     [compojure.route :as route]
     [clojure.data.json :as json]
-    [todo.lib.components.items.routes :as items-routes]
     )
+  (:use [todo.lib.components.items.routes :only (items-router)])
   (:gen-class))
 
 (defn echo-route
@@ -24,10 +24,10 @@
    :body    "<h1> I'm just an api to learn Clojure and create a simple todolist api</h1>"
    })
 
-(defroutes app-routes
-           (GET "/whoami" [] whoami-route)
-           (GET "/" [] echo-route)
-           (GET "/todos" [] items-routes/get-todos-route)
-           (GET "/todos/:id" [] items-routes/get-todo-route)
-           (POST "/todos" [] items-routes/add-todos-route)
-           (route/not-found "<h1>Page Not found my dear friend!</h1>"))
+(def app-routes
+  (routes
+    (GET "/whoami" [] whoami-route)
+    (GET "/" [] echo-route)
+    items-router
+    (route/not-found "<h1>Page Not found my dear friend!</h1>")))
+
