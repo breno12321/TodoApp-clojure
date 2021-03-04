@@ -1,4 +1,4 @@
-# todo - WIP 🚧 (Pushing bc U know how loosing code feels like )
+# todo - WIP 🚧 
 
 `A Clojure library designed to ... well, that part is up to you.` 
 
