@@ -15,6 +15,13 @@
   [{id :id}]
   (model/get-todo (Integer/parseInt id)))
 
+(defn toggle-todo
+  "Toggle done/undone a record from todo"
+  [{id :id}]
+  (let [done (:done (get-todo {:id id}))]
+    (model/update-todo (Integer/parseInt id) {:done (not done)})
+    ))
+
 (defn del-todo
   "Delete a record from todo"
   [{id :id}]
@@ -29,3 +36,12 @@
     (:tags record)
     (:done record)
     (c/to-sql-time (:due_date record))))
+
+(defn update-todo
+  "Update a record to todo"
+  [{ id :id title :title description :description tags :tags done :done due_date :due_date}]
+  (let [todo (into {} (filter (comp some? val) {:title title :description description :tags tags :done done :due_date due_date}))]
+  (->>(if (contains? todo :due_date)
+                (update todo :due_date c/to-sql-time)
+                todo)
+  (model/update-todo (Integer/parseInt id)))))

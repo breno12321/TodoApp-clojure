@@ -28,6 +28,6 @@
   (routes
     (GET "/whoami" [] whoami-route)
     (GET "/" [] echo-route)
-    items-router
+    (items-router)
     (route/not-found "<h1>Page Not found my dear friend!</h1>")))
 
